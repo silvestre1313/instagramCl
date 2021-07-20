@@ -1,8 +1,10 @@
-package com.example.instagram;
+package com.example.instagram.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.instagram.R;
 
 public class MainActivity extends AppCompatActivity {
 
