@@ -1,6 +1,5 @@
 package com.example.instagram.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,9 +13,6 @@ import android.widget.Toast;
 import com.example.instagram.R;
 import com.example.instagram.helper.ConfiguracaoFirebase;
 import com.example.instagram.model.Usuario;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -128,6 +124,8 @@ public class CadastroActivity extends AppCompatActivity {
         campoSenha = findViewById(R.id.editCadastroSenha);
         botaoCadastrar = findViewById(R.id.buttonCadastrar);
         progressBar = findViewById(R.id.progressCadastro);
+
+        campoNome.requestFocus();
 
     }
 
