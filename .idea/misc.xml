@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/drawable/ic_email_black.xml" value="0.3828125" />
+        <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/drawable/ic_perfil_preto.xml" value="0.3828125" />
+        <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/activity_editar_perfil.xml" value="0.2603448275862069" />
+        <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/activity_login.xml" value="0.33" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

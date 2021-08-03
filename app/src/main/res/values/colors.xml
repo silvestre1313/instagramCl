@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="color_primary_dark">#000000</color>
     <color name="color_primary">#FFFFFF</color>
+    <color name="color_accent">#a03d89</color>
     <color name="cinza_medio">#DBDBDB</color>
     <color name="roxo">#462759</color>
+    <color name="azul_escuro">#3f51b5</color>
 </resources>
