@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.instagram.R;
 import com.example.instagram.helper.ConfiguracaoFirebase;
+import com.example.instagram.helper.UsuarioFirebase;
 import com.example.instagram.model.Usuario;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -92,6 +93,9 @@ public class CadastroActivity extends AppCompatActivity {
                             String idUsuario = task.getResult().getUser().getUid();
                             usuario.setId(idUsuario);
                             usuario.salvar();
+
+                            //Salvar dados no profile do Firebase
+                            UsuarioFirebase.atualizarNomeUsuario(usuario.getNome());
 
                             Toast.makeText(CadastroActivity.this, "Cadastro com sucesso", Toast.LENGTH_SHORT).show();
 
