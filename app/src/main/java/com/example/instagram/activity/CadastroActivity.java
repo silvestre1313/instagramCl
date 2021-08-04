@@ -84,11 +84,25 @@ public class CadastroActivity extends AppCompatActivity {
 
                     if (task.isSuccessful()){
 
-                        progressBar.setVisibility(View.GONE);
-                        Toast.makeText(CadastroActivity.this, "Cadastro com sucesso", Toast.LENGTH_SHORT).show();
+                        try{
 
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        finish();
+                            progressBar.setVisibility(View.GONE);
+
+                            //Salvar daods no firebase
+                            String idUsuario = task.getResult().getUser().getUid();
+                            usuario.setId(idUsuario);
+                            usuario.salvar();
+
+                            Toast.makeText(CadastroActivity.this, "Cadastro com sucesso", Toast.LENGTH_SHORT).show();
+
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            finish();
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+
 
                     }else{
 
