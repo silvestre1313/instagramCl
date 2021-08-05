@@ -6,9 +6,11 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.instagram.R;
 import com.example.instagram.helper.UsuarioFirebase;
+import com.example.instagram.model.Usuario;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -20,11 +22,15 @@ public class EditarPerfilActivity extends AppCompatActivity {
     private TextView textAlterarFoto;
     private TextInputEditText editNomePerfil, editEmailPerfil;
     private Button buttonSalvarAlteracoes;
+    private Usuario usuarioLogado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_perfil);
+
+        //Configurações iniciais
+        usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
 
         //Configura toolbar
         Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
@@ -42,6 +48,22 @@ public class EditarPerfilActivity extends AppCompatActivity {
         editNomePerfil.setText(usuarioPerfil.getDisplayName());
         editEmailPerfil.setText(usuarioPerfil.getEmail());
 
+        //SAlvar alterações do nome
+        buttonSalvarAlteracoes.setOnClickListener(v->{
+
+            String nomeAtualizado = editNomePerfil.getText().toString();
+
+            //Atualizar nome no perfil
+            UsuarioFirebase.atualizarNomeUsuario(nomeAtualizado);
+
+            //Atualizar nome no banco de dados
+            usuarioLogado.setNome(nomeAtualizado);
+            usuarioLogado.atualizar();
+
+            Toast.makeText(EditarPerfilActivity.this, "Dados alterados com sucesso", Toast.LENGTH_SHORT).show();
+
+        });
+
     }
 
     public void inicializarComponentes(){
@@ -53,6 +75,12 @@ public class EditarPerfilActivity extends AppCompatActivity {
         buttonSalvarAlteracoes = findViewById(R.id.buttonSalvarAlteracoes);
         editEmailPerfil.setFocusable(false);
 
+    }
+    
+    public boolean onSupportNavigateUp(){
+
+        finish();
+        return false;
     }
 
 }
