@@ -14,7 +14,8 @@
         <SearchView
             android:id="@+id/searchViewPesquisa"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"/>
 
     </androidx.cardview.widget.CardView>
 
