@@ -76,46 +76,43 @@ public class PostagemFragment extends Fragment {
         });
 
         activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                         if (result.getResultCode() == Activity.RESULT_OK){
+                result -> {
+                     if (result.getResultCode() == Activity.RESULT_OK){
 
-                             Bitmap imagem = null;
+                         Bitmap imagem = null;
 
-                             try{
-                                //Valida tipo de seleção de imagem
-                                 switch (requestCode){
-                                     case SELECAO_CAMERA:
-                                         imagem = (Bitmap) result.getData().getExtras().get("data");
-                                         break;
-                                     case SELECAO_GALERIA:
-                                         Uri localImagemSelecionada = result.getData().getData();
-                                         imagem = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), localImagemSelecionada);
-                                         break;
-                                 }
-
-                                 //Valida imagem selecionada
-                                 if (imagem != null){
-
-                                     //Converte imagem em byte array
-                                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                                     imagem.compress(Bitmap.CompressFormat.JPEG, 70, baos);
-                                     byte[] dadosImagem = baos.toByteArray();
-
-                                     //Envia imagem escolhida para alicação de filtro
-                                     Intent i = new Intent(getActivity(), FiltroActivity.class);
-                                     i.putExtra("fotoEscolhida", dadosImagem);
-                                     startActivity(i);
-
-                                 }
-
-
-                             }catch (Exception e){
-                                 e.printStackTrace();
+                         try{
+                            //Valida tipo de seleção de imagem
+                             switch (requestCode){
+                                 case SELECAO_CAMERA:
+                                     imagem = (Bitmap) result.getData().getExtras().get("data");
+                                     break;
+                                 case SELECAO_GALERIA:
+                                     Uri localImagemSelecionada = result.getData().getData();
+                                     imagem = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), localImagemSelecionada);
+                                     break;
                              }
+
+                             //Valida imagem selecionada
+                             if (imagem != null){
+
+                                 //Converte imagem em byte array
+                                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                                 imagem.compress(Bitmap.CompressFormat.JPEG, 70, baos);
+                                 byte[] dadosImagem = baos.toByteArray();
+
+                                 //Envia imagem escolhida para alicação de filtro
+                                 Intent i = new Intent(getActivity(), FiltroActivity.class);
+                                 i.putExtra("fotoEscolhida", dadosImagem);
+                                 startActivity(i);
+
+                             }
+
+
+                         }catch (Exception e){
+                             e.printStackTrace();
                          }
-                    }
+                     }
                 });
 
         return view;

@@ -6,13 +6,14 @@
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/drawable/ic_email_black.xml" value="0.3828125" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/drawable/ic_perfil_preto.xml" value="0.3828125" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/activity_editar_perfil.xml" value="0.2603448275862069" />
-        <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/activity_filtro.xml" value="0.15" />
+        <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/activity_filtro.xml" value="0.33" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/activity_perfil_amigo.xml" value="0.15" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/adapter_pesquisa_usuario.xml" value="0.22" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/fragment_perfil.xml" value="0.25" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/fragment_pesquisa.xml" value="0.18" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/fragment_postagem.xml" value="0.22" />
+        <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/menu/menu_filtro.xml" value="0.22" />
       </map>
     </option>
   </component>
