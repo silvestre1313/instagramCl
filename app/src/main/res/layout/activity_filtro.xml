@@ -26,13 +26,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="5dp"
+            android:textColorHint="@color/black"
+            app:boxBackgroundColor="@null"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textDescricaoFiltro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Descrição" />
+                android:hint="Descrição"
+                android:textColorHint="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.recyclerview.widget.RecyclerView
