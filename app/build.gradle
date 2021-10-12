@@ -56,4 +56,7 @@ dependencies {
     //Dependencia AndroidPhotoFilters
     implementation 'info.androidhive:imagefilters:1.0.7'
 
+    //Dependencia da Lib Universal Image Loader
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+
 }
