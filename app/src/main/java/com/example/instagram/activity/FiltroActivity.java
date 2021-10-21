@@ -64,6 +64,8 @@ public class FiltroActivity extends AppCompatActivity {
 
     private DatabaseReference usuariosRef;
     private DatabaseReference usuarioLogadoRef;
+    private DatabaseReference firebaseRef;
+    private DataSnapshot seguidoresSnapshot;
 
 
     @Override
@@ -75,6 +77,7 @@ public class FiltroActivity extends AppCompatActivity {
         listaFiltros = new ArrayList<>();
         idUsuarioLogado = UsuarioFirebase.getIdentificadorUsuario();
         usuariosRef = ConfiguracaoFirebase.getFirebase().child("usuarios");
+        firebaseRef = ConfiguracaoFirebase.getFirebase();
 
         //Inicializar componenetes
         imageFotoEscolhida = findViewById(R.id.imageFotoEscolhida);
@@ -82,7 +85,7 @@ public class FiltroActivity extends AppCompatActivity {
         textDescricaoFiltro = findViewById(R.id.textDescricaoFiltro);
 
         //Recuperar dados do usuario logado
-        recuperarDadosUsuarioLogado();
+        recuperarDadosPostagem();
 
         //Configura toolbar
         Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
@@ -155,7 +158,7 @@ public class FiltroActivity extends AppCompatActivity {
 
     }
 
-    private void recuperarDadosUsuarioLogado(){
+    private void recuperarDadosPostagem(){
 
         abrirDialogCarregamento("Carregando dados, aguarde");
 
@@ -167,7 +170,26 @@ public class FiltroActivity extends AppCompatActivity {
 
                         //Recupera dados de usuario logado
                         usuarioLogado = snapshot.getValue(Usuario.class);
+
+                        //Recuperar seguidores
+                        DatabaseReference seguidoresRef = firebaseRef
+                                .child("seguidores")
+                                .child(idUsuarioLogado);
+                        seguidoresRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                seguidoresSnapshot = snapshot;
+                                dialog.cancel();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
                         dialog.cancel();
+
                     }
 
                     @Override
@@ -233,13 +255,13 @@ public class FiltroActivity extends AppCompatActivity {
                         Uri url = task.getResult();
                         postagem.setCaminhoFoto(url.toString());
 
-                        //Salvar postagem
-                        if (postagem.salvar()){
+                        //Atualizar quantidade de postagens
+                        int qtdPostagem = usuarioLogado.getPostagens() + 1;
+                        usuarioLogado.setPostagens(qtdPostagem);
+                        usuarioLogado.atualizarQtdPostagem();
 
-                            //Atualizar quantidade de postagens
-                            int qtdPostagem = usuarioLogado.getPostagens() + 1;
-                            usuarioLogado.setPostagens(qtdPostagem);
-                            usuarioLogado.atualizarQtdPostagem();
+                        //Salvar postagem
+                        if (postagem.salvar(seguidoresSnapshot)){
 
                             Toast.makeText(FiltroActivity.this, "Sucesso ao salvar postagem", Toast.LENGTH_SHORT).show();
                             dialog.cancel();
