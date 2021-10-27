@@ -1,6 +1,7 @@
 package com.example.instagram.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.instagram.R;
+import com.example.instagram.activity.ComentariosActivity;
 import com.example.instagram.helper.ConfiguracaoFirebase;
 import com.example.instagram.helper.UsuarioFirebase;
 import com.example.instagram.model.Feed;
@@ -61,6 +63,16 @@ public class AdapterFeed extends RecyclerView.Adapter<AdapterFeed.MyViewHolder> 
 
         holder.descricao.setText(feed.getDescricacao());
         holder.nome.setText(feed.getNomeUsuario());
+
+        //Adiciona evento de clique nos comentarios
+        holder.visualizarComentario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, ComentariosActivity.class);
+                i.putExtra("idPostagem", feed.getId());
+                context.startActivity(i);
+            }
+        });
 
         //Recuperar dados da postagem curtida
         DatabaseReference curtidasRef = ConfiguracaoFirebase.getFirebase()

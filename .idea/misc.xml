@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/drawable/background_caixa_comentario.xml" value="0.1" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/drawable/ic_email_black.xml" value="0.3828125" />
+        <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/drawable/ic_enviar_preto.xml" value="0.1" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/drawable/ic_perfil_preto.xml" value="0.3828125" />
+        <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/activity_comentarios.xml" value="0.33" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/activity_editar_perfil.xml" value="0.2603448275862069" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/activity_filtro.xml" value="0.22" />
         <entry key="..\:/Users/Pichau/AndroidStudioProjects/Instagram/app/src/main/res/layout/activity_login.xml" value="0.33" />
