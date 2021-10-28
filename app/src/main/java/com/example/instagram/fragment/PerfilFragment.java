@@ -76,16 +76,6 @@ public class PerfilFragment extends Fragment {
         //Configurações dos componentes
         inicializarComponenetes(view);
 
-        //Recuperar foto do usuario
-        String caminhoiFoto = usuarioLogado.getCaminhoFoto();
-        if (caminhoiFoto != null){
-            Uri url = Uri.parse(caminhoiFoto);
-            Glide.with(getActivity())
-                    .load(url)
-                    .into(imagePerfil);
-        }
-
-
         //Abre edição de perfil
         buttonAcaoPerfil.setOnClickListener(v->{
             Intent i = new Intent(getActivity(), EditarPerfilActivity.class);
@@ -117,9 +107,6 @@ public class PerfilFragment extends Fragment {
                     Postagem postagem = ds.getValue(Postagem.class);
                     urlFotos.add(postagem.getCaminhoFoto());
                 }
-
-                int qtdPostagem = urlFotos.size();
-                textPublicacoes.setText(String.valueOf(qtdPostagem));
 
                 //Configurar adapter
                 adapterGrid = new AdapterGrid(getActivity(), R.layout.grid_postagem, urlFotos);
@@ -166,12 +153,12 @@ public class PerfilFragment extends Fragment {
 
                 Usuario usuario = snapshot.getValue(Usuario.class);
 
-                //String postagens = String.valueOf(usuario.getPostagens());
+                String postagens = String.valueOf(usuario.getPostagens());
                 String seguindo = String.valueOf(usuario.getSeguindo());
                 String seguidores = String.valueOf(usuario.getSeguidores());
 
                 //Configura valores recuperados
-                //textPublicacoes.setText(postagens);
+                textPublicacoes.setText(postagens);
                 textSeguidores.setText(seguidores);
                 textSeguindo.setText(seguindo);
 
@@ -184,10 +171,27 @@ public class PerfilFragment extends Fragment {
         });
     }
 
+    private void recuperarFotoUsuario(){
+
+        usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
+
+        //Recuperar foto do usuario
+        String caminhoiFoto = usuarioLogado.getCaminhoFoto();
+        if (caminhoiFoto != null){
+            Uri url = Uri.parse(caminhoiFoto);
+            Glide.with(getActivity())
+                    .load(url)
+                    .into(imagePerfil);
+        }
+    }
+
     @Override
     public void onStart() {
         super.onStart();
+
         recuperarDadosUsuarioLogado();
+
+        recuperarFotoUsuario();
     }
 
     @Override

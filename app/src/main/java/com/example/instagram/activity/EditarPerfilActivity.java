@@ -87,7 +87,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
             imageEditarPerfil.setImageResource(R.drawable.avatar);
         }
 
-        //SAlvar alterações do nome
+        //Salvar alterações do nome
         buttonSalvarAlteracoes.setOnClickListener(v->{
 
             String nomeAtualizado = editNomePerfil.getText().toString();
