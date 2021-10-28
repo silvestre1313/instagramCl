@@ -30,4 +30,7 @@
             android:paddingLeft="10dp"
             android:text="Nome do Usuario" />
     </LinearLayout>
+
+    <include layout="@layout/divisor"/>
+
 </androidx.appcompat.widget.LinearLayoutCompat>
